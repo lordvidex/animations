@@ -13,6 +13,8 @@
 		B90A7ABA2800BB3D00F32769 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B90A7AB82800BB3D00F32769 /* Main.storyboard */; };
 		B90A7ABC2800BB4700F32769 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B90A7ABB2800BB4700F32769 /* Assets.xcassets */; };
 		B90A7ABF2800BB4700F32769 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B90A7ABD2800BB4700F32769 /* LaunchScreen.storyboard */; };
+		B90A7AC72800DC0B00F32769 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90A7AC62800DC0B00F32769 /* DetailsViewController.swift */; };
+		B90A7AC92800DCC400F32769 /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90A7AC82800DCC400F32769 /* TransitionAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		B90A7ABB2800BB4700F32769 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B90A7ABE2800BB4700F32769 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B90A7AC02800BB4700F32769 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B90A7AC62800DC0B00F32769 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		B90A7AC82800DCC400F32769 /* TransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				B90A7ABB2800BB4700F32769 /* Assets.xcassets */,
 				B90A7ABD2800BB4700F32769 /* LaunchScreen.storyboard */,
 				B90A7AC02800BB4700F32769 /* Info.plist */,
+				B90A7AC62800DC0B00F32769 /* DetailsViewController.swift */,
+				B90A7AC82800DCC400F32769 /* TransitionAnimator.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -140,7 +146,9 @@
 			files = (
 				B90A7AB72800BB3D00F32769 /* ViewController.swift in Sources */,
 				B90A7AB32800BB3D00F32769 /* AppDelegate.swift in Sources */,
+				B90A7AC92800DCC400F32769 /* TransitionAnimator.swift in Sources */,
 				B90A7AB52800BB3D00F32769 /* SceneDelegate.swift in Sources */,
+				B90A7AC72800DC0B00F32769 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

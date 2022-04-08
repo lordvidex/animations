@@ -11,34 +11,36 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var manualAnimateSlider: UISlider!
-    @IBOutlet weak var autoAnimateSwitch: UISwitch!
     
     // gesture recognizer
     lazy var recognizer: UITapGestureRecognizer = {
-        let rec = UITapGestureRecognizer(target: self, action: #selector(self.onImageTapped))
+        let rec = UITapGestureRecognizer(target: self,
+                                         action: #selector(self.onImageTapped))
         return rec
     }()
     
     // property animator
     let animator = UIViewPropertyAnimator(duration: 2, curve: .easeInOut)
+    let transitionAnimator = TransitionAnimator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        image.isUserInteractionEnabled = true
-        image.addGestureRecognizer(recognizer)
         configureInitialSetup()
         configureAnimations()
 //        animator.startAnimation()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        image.isUserInteractionEnabled = true
+        image.addGestureRecognizer(recognizer)
+    }
+    
     func configureInitialSetup() {
-        manualAnimateSlider.isEnabled = false
-        autoAnimateSwitch.isOn = false
         
         manualAnimateSlider.value = 0
-        image.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-        image.alpha = 0
+        image.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        image.alpha = 1
         
     }
     
@@ -56,22 +58,33 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func onManualAnimate(_ sender: UISwitch) {
-        manualAnimateSlider.isEnabled = sender.isOn
-        if !sender.isOn {
-            animator.stopAnimation(true)
-        }
-    }
-    
     @IBAction func onManualSliderChanged(_ sender: UISlider) {
         animator.fractionComplete = CGFloat(sender.value)
     }
     
     @objc func onImageTapped() {
-        print("Handled")
+       performSegue(withIdentifier: "navigate", sender: self)
+        
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailsVC = segue.destination as? DetailsViewController {
+            detailsVC.transitioningDelegate = self
+        }
+    }
+}
+
+extension ViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transitionAnimator.originFrame = image.frame
+        transitionAnimator.presenting = true
+        return transitionAnimator
+    }
     
-    
+    func animationController(forDismissed dismissed: UIViewController)
+    -> UIViewControllerAnimatedTransitioning? {
+        transitionAnimator.presenting = false
+        return transitionAnimator
+    }
 }
 
