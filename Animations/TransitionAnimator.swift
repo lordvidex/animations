@@ -55,6 +55,9 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
                        options: [.curveLinear],
                        animations: {
             loadingView.transform = self.presenting ? .identity : scaleTransform
+            if self.presenting {
+                loadingView.frame.origin.y = 0
+            }
             loadingView.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY)
         },
                        completion: { _ in

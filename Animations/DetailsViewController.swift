@@ -9,12 +9,15 @@ import UIKit
 
 class DetailsViewController: UIViewController {
     
+    @IBOutlet weak var imageLarge: UIImageView!
+    
     override var prefersStatusBarHidden: Bool {
         true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageLarge.transform = CGAffineTransform(rotationAngle: Double.pi)
     }
     
     @IBAction func onTouchDown(_ sender: UIButton) {

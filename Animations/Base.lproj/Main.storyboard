@@ -35,6 +35,12 @@
                                     <constraint firstAttribute="height" constant="200" id="VRG-SR-A5b"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drag the Slider" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xp3-uO-qik">
+                                <rect key="frame" x="20" y="801.66666666666663" width="388" height="20.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -42,6 +48,9 @@
                         <constraints>
                             <constraint firstItem="z9E-mt-gfV" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-20" id="1HH-su-OjW"/>
                             <constraint firstItem="hjt-Lb-Ss4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="b6n-qk-nlG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xp3-uO-qik" secondAttribute="trailing" constant="20" id="bNM-Be-Xjk"/>
+                            <constraint firstItem="Wrg-lS-4xK" firstAttribute="top" secondItem="xp3-uO-qik" secondAttribute="bottom" constant="20" id="i9z-Ge-Oey"/>
+                            <constraint firstItem="xp3-uO-qik" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="irB-1Y-aMO"/>
                             <constraint firstItem="hjt-Lb-Ss4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jcQ-jx-KCv"/>
                             <constraint firstItem="z9E-mt-gfV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="oYu-fb-AP7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="z9E-mt-gfV" secondAttribute="bottom" constant="20" id="x1F-Hm-hhP"/>
@@ -49,6 +58,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Ltm-Rb-NxM"/>
                     <connections>
+                        <outlet property="hintLabel" destination="xp3-uO-qik" id="XMz-Hv-vuT"/>
                         <outlet property="image" destination="hjt-Lb-Ss4" id="JIE-ZN-vqA"/>
                         <outlet property="manualAnimateSlider" destination="Wrg-lS-4xK" id="QLp-HE-N3S"/>
                         <segue destination="xRm-Jj-MYr" kind="presentation" identifier="navigate" id="xK6-fb-B58"/>
@@ -94,6 +104,9 @@
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="imageLarge" destination="69Q-lP-HDK" id="aJs-bP-hSS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fP3-VS-p84" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var hintLabel: UILabel!
     @IBOutlet weak var manualAnimateSlider: UISlider!
     
     // gesture recognizer
@@ -28,7 +29,6 @@ class ViewController: UIViewController {
         
         configureInitialSetup()
         configureAnimations()
-//        animator.startAnimation()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -39,8 +39,8 @@ class ViewController: UIViewController {
     func configureInitialSetup() {
         
         manualAnimateSlider.value = 0
-        image.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-        image.alpha = 1
+        image.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        image.alpha = 0
         
     }
     
@@ -50,6 +50,10 @@ class ViewController: UIViewController {
             self.image.transform = CGAffineTransform(rotationAngle: Double.pi)
             self.image.alpha = 1.0
         }
+        
+        self.animator.addAnimations ({ [weak self] in
+            self?.hintLabel.text = "Click the Image"
+        }, delayFactor: 0.3)
         
         
         self.animator.addAnimations({
@@ -63,8 +67,12 @@ class ViewController: UIViewController {
     }
     
     @objc func onImageTapped() {
-       performSegue(withIdentifier: "navigate", sender: self)
-        
+        UIView.animate(withDuration: 1) {
+            self.animator.fractionComplete = 1.0
+            self.manualAnimateSlider.value = 1.0
+        } completion: { _ in
+            self.performSegue(withIdentifier: "navigate", sender: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
