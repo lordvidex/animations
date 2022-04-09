@@ -66,19 +66,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2Y-Az-wwT">
-                                <rect key="frame" x="180" y="420" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2Y-Az-wwT">
+                                <rect key="frame" x="326.33333333333331" y="10" width="81.666666666666686" height="31"/>
+                                <color key="tintColor" red="0.96264153720000001" green="0.86714428659999998" blue="0.29000431300000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" image="clear.fill" catalog="system" title="Close"/>
+                                <connections>
+                                    <action selector="onTouchDown:" destination="xRm-Jj-MYr" eventType="touchDown" id="phX-lc-IgO"/>
+                                    <action selector="onTouchUpInside:" destination="xRm-Jj-MYr" eventType="touchUpInside" id="Tek-kL-8Je"/>
+                                </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tyre" translatesAutoresizingMaskIntoConstraints="NO" id="69Q-lP-HDK">
-                                <rect key="frame" x="20" y="44" width="388" height="337"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tyre" translatesAutoresizingMaskIntoConstraints="NO" id="69Q-lP-HDK">
+                                <rect key="frame" x="0.0" y="49" width="428" height="428"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7QX-Nt-hnW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="g2Y-Az-wwT" firstAttribute="leading" relation="lessThanOrEqual" secondItem="7QX-Nt-hnW" secondAttribute="leading" priority="900" constant="341" id="0DH-iB-O3k"/>
+                            <constraint firstItem="69Q-lP-HDK" firstAttribute="height" secondItem="7QX-Nt-hnW" secondAttribute="width" id="9UB-aP-xVz"/>
+                            <constraint firstItem="69Q-lP-HDK" firstAttribute="leading" secondItem="7QX-Nt-hnW" secondAttribute="leading" id="dFl-88-Lzv"/>
+                            <constraint firstItem="69Q-lP-HDK" firstAttribute="top" secondItem="g2Y-Az-wwT" secondAttribute="bottom" constant="8" id="jtR-Um-6Zu"/>
+                            <constraint firstItem="7QX-Nt-hnW" firstAttribute="trailing" secondItem="g2Y-Az-wwT" secondAttribute="trailing" constant="20" id="ldw-G4-wAn"/>
+                            <constraint firstItem="g2Y-Az-wwT" firstAttribute="top" secondItem="7QX-Nt-hnW" secondAttribute="top" constant="10" id="n00-nz-twh"/>
+                            <constraint firstItem="7QX-Nt-hnW" firstAttribute="trailing" secondItem="69Q-lP-HDK" secondAttribute="trailing" id="p8E-GJ-lTT"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -107,6 +119,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="clear.fill" catalog="system" width="128" height="114"/>
         <image name="tyre" width="404" height="391"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

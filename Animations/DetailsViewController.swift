@@ -8,7 +8,7 @@
 import UIKit
 
 class DetailsViewController: UIViewController {
-
+    
     override var prefersStatusBarHidden: Bool {
         true
     }
@@ -16,5 +16,24 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
+    @IBAction func onTouchDown(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.2, options: .curveEaseIn) {
+            sender.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        }
+    }
+    
+    @IBAction func onTouchUpInside(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.15,
+                       delay: 0,
+                       options: .curveEaseIn) {
+            sender.transform = CGAffineTransform(scaleX: 1, y: 1)
+        } completion: { _ in
+            self.dismiss(animated: true)
+        }
+        
+        
+        
+        
+    }
 }
