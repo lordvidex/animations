@@ -11,7 +11,7 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     let duration = 1.0
     var presenting = true
-    var originFrame = CGRect.zero
+    var originFrame: CGRect = .zero
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         duration
@@ -19,14 +19,18 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
-        guard let toView = transitionContext.view(forKey: .to) else {
-            transitionContext.completeTransition(true)
-            return
-        }
+        
+//        guard
+            let toView = transitionContext.view(forKey: .to) ?? UIView(frame: originFrame)
+//        else {
+//            transitionContext.completeTransition(true)
+//            return
+//        }
         guard let loadingView = presenting ? toView : transitionContext.view(forKey: .from) else {
             transitionContext.completeTransition(true)
             return
         }
+        
         
         let initialFrame = presenting ? originFrame : loadingView.frame
         let finalFrame = presenting ? loadingView.frame : originFrame
@@ -44,8 +48,9 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         }
         
         loadingView.layer.masksToBounds = true
-        
-        containerView.addSubview(toView)
+        if presenting {
+            containerView.addSubview(toView)
+        }
         containerView.bringSubviewToFront(loadingView)
         
         UIView.animate(withDuration: duration,
@@ -57,10 +62,14 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             loadingView.transform = self.presenting ? .identity : scaleTransform
             if self.presenting {
                 loadingView.frame.origin.y = 0
+            } else {
+                loadingView.alpha = 0
             }
             loadingView.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY)
         },
                        completion: { _ in
+            
+//            loadingView.isHidden = true
             transitionContext.completeTransition(true)
         })
     }
